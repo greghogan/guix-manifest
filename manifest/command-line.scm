@@ -90,7 +90,7 @@
 (define phoronix-test-suite-profile-toolchain
   (package
     (inherit phoronix-test-suite)
-    (propagated-inputs (list gcc-toolchain-12))))
+    (propagated-inputs (list gcc-toolchain-13))))
 
 ;; Fix package collisions.
 (use-modules

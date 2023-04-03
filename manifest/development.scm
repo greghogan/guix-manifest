@@ -93,15 +93,15 @@
  (gnu packages gcc)
  (gnu packages llvm))
 
-(define with-gcc12
+(define with-gcc13
   (package-input-rewriting/spec
-   `(("gcc" . ,(const gcc-12)))))
+   `(("gcc" . ,(const gcc-13)))))
 
-(define clang-toolchain-with-gcc12
-  (with-gcc12 clang-toolchain-17))
+(define clang-toolchain-with-gcc13
+  (with-gcc13 clang-toolchain-18))
 
-(define lldb-with-gcc12
-  (with-gcc12 lldb))
+(define lldb-with-gcc13
+  (with-gcc13 lldb))
 
 ;; Listing of development packages.
 (define development-packages
@@ -148,8 +148,8 @@
         #| clang-toolchain:debug |#
         "cling"
         "cppcheck"
-        "gcc-toolchain@12"
-        "gcc-toolchain@12:debug"
+        "gcc-toolchain@13"
+        "gcc-toolchain@13:debug"
 
         ;; C++ libraries
         "abseil-cpp"
@@ -252,11 +252,11 @@
     (packages->manifest
      `(;; The included version of gcc-toolchain must match that used to build
        ;; clang-toolchain such that both compilers are usable in the profile.
-       ,clang-toolchain-with-gcc12
-       (,clang-toolchain-with-gcc12 "debug")
+       ,clang-toolchain-with-gcc13
+       (,clang-toolchain-with-gcc13 "debug")
 
        ;; Rewriten lldb avoids copies of dependent clang packages.
-       ,lldb-with-gcc12
+       ,lldb-with-gcc13
 
        ;; Package variants updated in this manifest.
        ,cmake-update

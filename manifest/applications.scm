@@ -120,7 +120,7 @@
         "scilab"
 
         ;; Resource monitoring
-        "mission-center"
+;        "mission-center"
 
         ;; Video
         "ffmpeg"

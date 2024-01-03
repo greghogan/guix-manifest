@@ -43,9 +43,9 @@
         "julia"
 
         ;; Machine Learning
-        "python-keras"
+;        "python-keras"
         "python-pytorch"
-        "tensorflow"
+;        "tensorflow"
  
         ;; Perl
         "perl"

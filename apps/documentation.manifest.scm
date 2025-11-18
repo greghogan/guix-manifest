@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define documentation-packages
   (list "info-reader"
@@ -20,7 +21,7 @@
         "tealdeer"))
 
 (define documentation-manifest
-  (specifications->manifest
+  (package-manifest
      documentation-packages))
 
 (with-locales documentation-manifest)

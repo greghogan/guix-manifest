@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define maths-packages
   (list "giac"
@@ -20,7 +21,7 @@
         "scilab"))
 
 (define maths-manifest
-  (specifications->manifest
+  (package-manifest
      maths-packages))
 
 (with-locales maths-manifest)

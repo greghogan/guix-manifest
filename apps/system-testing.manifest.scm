@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define system-testing-packages
   (list "atop"
@@ -28,7 +29,7 @@
         "sysbench"))
 
 (define system-testing-manifest
-  (specifications->manifest
+  (package-manifest
      system-testing-packages))
 
 (with-locales system-testing-manifest)

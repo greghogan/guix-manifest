@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define shell-packages
   (list "bash"
@@ -28,7 +29,7 @@
         "zsh"))
 
 (define shell-manifest
-  (specifications->manifest
+  (package-manifest
      shell-packages))
 
 (with-locales shell-manifest)

@@ -10,21 +10,17 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(include "../lib/arch.scm")
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define checksum-packages
-  (append
-   (match %system-architecture
-     ((or "x86_64" "i686")
-      (list "b2sum"))
-     (_ `()))
-   (list "b3sum"
-         "par2cmdline"
-         "ssdeep")))
+  (list "b2sum"
+        "b3sum"
+        "par2cmdline"
+        "ssdeep"))
 
 (define checksum-manifest
-  (specifications->manifest
-     checksum-packages))
+  (package-manifest
+    checksum-packages))
 
 (with-locales checksum-manifest)

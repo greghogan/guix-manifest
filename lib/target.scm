@@ -10,20 +10,17 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(include "../lib/locale.scm")
-(include "../lib/target.scm")
+;; https://lists.gnu.org/archive/html/help-guix/2023-03/msg00055.html
+(use-modules
+ (guix packages)
+ (guix profiles))
 
-(define editor-packages
-  (list "aspell"
-        "aspell-dict-en"
-        "bat"
-        "hexedit"
-        "hexyl"
-        "less"
-        "sed"))
-
-(define editor-manifest
-  (package-manifest
-     editor-packages))
-
-(with-locales editor-manifest)
+(define (package-manifest packages)
+  (packages->manifest
+    (map (compose list specification->package+output)
+         (filter (lambda (pkg)
+                   (member (or (%current-system)
+                               (%current-target-system))
+                           (package-transitive-supported-systems
+                             (specification->package+output pkg))))
+                 packages))))

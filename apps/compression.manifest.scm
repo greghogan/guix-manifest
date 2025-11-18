@@ -11,9 +11,11 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define compression-packages
-  (list "atool"
+  (list "7zip"
+        "atool"
         "brotli"
         "bzip2"
         "cabextract"
@@ -24,7 +26,6 @@
         "lzip"
         "lziprecover"
         "ncompress"
-        "p7zip"
         "patool"
         "pbzip2"
         "plzip"
@@ -40,7 +41,7 @@
         "zstd"))
 
 (define compression-manifest
-  (specifications->manifest
+  (package-manifest
      compression-packages))
 
 (with-locales compression-manifest)

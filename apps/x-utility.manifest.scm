@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define x-utility-packages
   (list "mesa-utils"
@@ -27,7 +28,7 @@
         "xwininfo"))
 
 (define x-utility-manifest
-  (specifications->manifest
+  (package-manifest
      x-utility-packages))
 
 (with-locales x-utility-manifest)

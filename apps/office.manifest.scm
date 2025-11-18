@@ -11,12 +11,14 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define office-packages
-  (list "libreoffice"))
+  (list "goffice"
+        "libreoffice"))
 
 (define office-manifest
-  (specifications->manifest
+  (package-manifest
      office-packages))
 
 (with-locales office-manifest)

@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define tex-packages
   (list "texlive-datetime2"
@@ -18,7 +19,7 @@
         "texstudio"))
 
 (define tex-manifest
-  (specifications->manifest
+  (package-manifest
      tex-packages))
 
 (with-locales tex-manifest)

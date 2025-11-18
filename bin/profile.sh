@@ -19,7 +19,7 @@ set -euo pipefail
 unset GUIX_BUILD_OPTIONS
 
 usage() {
-  echo "Usage: $0 [-a|--arch <arch>] [-c|--cores <cores] [-m|--max-jobs <max jobs>] <manifest> [<manifest> ...]"
+  echo "Usage: $0 [-a|--arch <arch>] [-c|--cores <cores] [-j|--jobs <max jobs>] <manifest> [<manifest> ...]"
 }
 
 if [ $# -lt 1 ]; then
@@ -50,8 +50,8 @@ while [[ $# -gt 0 ]]; do
       usage
       exit 0
       ;;
-    -m|--max-jobs)
-      MAX_JOBS_ARG="$2"
+    -j|--jobs)
+      JOBS_ARG="$2"
       shift
       shift
       ;;
@@ -70,13 +70,13 @@ DEFAULT_ARCH="`uname -m`"
 ARCH=${ARCH_ARG:-${DEFAULT_ARCH}}
 echo "Arch: ${ARCH}"
 
-DEFAULT_CORES=$(nproc)
+DEFAULT_CORES=0
 CORES=${CORES:-${DEFAULT_CORES}}
 echo "Cores: ${CORES}"
 
-DEFAULT_MAX_JOBS="$(echo "define log2(x) { if (x == 1) return (0); return 1+log2(x/2); } ; 1+log2(`nproc`)" | bc)"
-MAX_JOBS=${MAX_JOBS_ARG:-${DEFAULT_MAX_JOBS}}
-echo "Max jobs: ${MAX_JOBS}"
+DEFAULT_JOBS="$(echo "define log2(x) { if (x == 1) return (0); return 1+log2(x/2); } ; 1+log2(`nproc`)" | bc)"
+JOBS=${JOBS_ARG:-${DEFAULT_JOBS}}
+echo "Jobs: ${JOBS}"
 
 MANIFEST_EXTENSION=".manifest.scm"
 COMMIT_EXTENSION=".commit.scm"
@@ -128,7 +128,7 @@ for MANIFEST in "${POSITIONAL_ARGS[@]}"; do
       --commit="${COMMIT}" \
     -- build \
       --manifest="${MANIFEST}" \
-      --max-jobs=$MAX_JOBS \
+      --max-jobs=$JOBS \
       --cores=$CORES \
       --keep-going \
       --verbosity=1 \

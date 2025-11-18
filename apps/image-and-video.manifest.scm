@@ -10,23 +10,19 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(include "../lib/arch.scm")
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define image-and-video-packages
-  (append
-   (match %system-architecture
-     ((or "x86_64" "i686")
-      (list "gimp"
-            "gimp-fourier"
-            "gimp-resynthesizer"))
-     (_ `()))
-   (list "ffmpeg"
-         "imagemagick"
-         "imagemagick:doc")))
+  (list "ffmpeg"
+        "gimp"
+        "gimp-fourier"
+        "gimp-resynthesizer"
+        "imagemagick"
+        "imagemagick:doc"))
 
 (define image-and-video-manifest
-  (specifications->manifest
+  (package-manifest
      image-and-video-packages))
 
 (with-locales image-and-video-manifest)

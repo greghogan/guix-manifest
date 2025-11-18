@@ -11,10 +11,11 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define source-control-packages
   (list "b4"
-        "breezy"
+;        "breezy"
         "cgit"
         "cvs"
         "darcs"
@@ -40,7 +41,7 @@
         "subversion"))
 
 (define source-control-manifest
-  (specifications->manifest
+  (package-manifest
      source-control-packages))
 
 (with-locales source-control-manifest)

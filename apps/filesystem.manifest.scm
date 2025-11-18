@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define filesystem-packages
   (list "btrfs-progs"
@@ -29,7 +30,7 @@
         "plocate"))
 
 (define filesystem-manifest
-  (specifications->manifest
+  (package-manifest
      filesystem-packages))
 
 (with-locales filesystem-manifest)

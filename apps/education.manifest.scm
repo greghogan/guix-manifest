@@ -11,12 +11,13 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define education-packages
   (list "anki"))
 
 (define education-manifest
-  (specifications->manifest
+  (package-manifest
      education-packages))
 
 (with-locales education-manifest)

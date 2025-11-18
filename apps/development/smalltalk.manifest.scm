@@ -14,8 +14,7 @@
 
 (define development-smalltalk-packages
   (list "smalltalk"
-;        "squeak-vm"
-))
+        "squeak-vm"))
 
 (define development-smalltalk-manifest
   (specifications->manifest

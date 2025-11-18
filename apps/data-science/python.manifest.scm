@@ -46,7 +46,6 @@
          "python-pyarrow"
          "python-requests"
          "python-scikit-learn"
-;         "python-scikit-learn-extra"
          "python-scipy"
          "python-seaborn"
          "python-sympy")))

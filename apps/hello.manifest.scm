@@ -11,12 +11,13 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define hello-packages
   (list "hello"))
 
 (define hello-manifest
-  (specifications->manifest
+  (package-manifest
      hello-packages))
 
 (with-locales hello-manifest)

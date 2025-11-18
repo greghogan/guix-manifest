@@ -10,23 +10,17 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(include "../lib/arch.scm")
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define jupyter-packages
-  (append
-   (match %system-architecture
-     ((or "x86_64" "i686")
-      (list "python-jupytext"
-            "python-notebook"))
-     (_ `()))
-   (list "guix-jupyter"
-         "jupyter"
-         #| python-jupytext |#
-         #| python-notebook |#)))
+  (list "guix-jupyter"
+        "jupyter"
+        "python-jupytext"
+        "python-notebook"))
 
 (define jupyter-manifest
-  (specifications->manifest
+  (package-manifest
      jupyter-packages))
 
 (with-locales jupyter-manifest)

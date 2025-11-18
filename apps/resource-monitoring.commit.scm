@@ -16,8 +16,8 @@
   (format #t "~a~%"
           (match arch
             ((or "x86_64" "i686")
-              "0fabca25f7f798b0e88f0cf2d31c722c07c9df24")
+              "9245f57207c81ced0b4780f88a97a441a86b7790")
             (_
-              "6eadb7cc7b260ae1e3aa6122bd083aa2d7cc4898"))))
+              "86fab16adb2bacf32d72fcb0c8f236cef2bc89c5"))))
 
 (apply commit (command-line))

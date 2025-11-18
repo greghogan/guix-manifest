@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define art-packages
   (list "boxes"
@@ -18,7 +19,7 @@
         "figlet"))
 
 (define art-manifest
-  (specifications->manifest
+  (package-manifest
      art-packages))
 
 (with-locales art-manifest)

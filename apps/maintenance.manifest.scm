@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define maintenance-packages
   (list "duperemove"
@@ -18,7 +19,7 @@
         "rmlint"))
 
 (define maintenance-manifest
-  (specifications->manifest
+  (package-manifest
      maintenance-packages))
 
 (with-locales maintenance-manifest)

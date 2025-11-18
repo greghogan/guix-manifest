@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define database-packages
   (list "mariadb"
@@ -18,7 +19,7 @@
         "sqlite"))
 
 (define database-manifest
-  (specifications->manifest
+  (package-manifest
      database-packages))
 
 (with-locales database-manifest)

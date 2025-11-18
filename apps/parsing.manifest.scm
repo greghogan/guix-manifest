@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define parsing-packages
   (list "catdoc"
@@ -22,7 +23,7 @@
         "diffoscope"
         "diffstat"
         "diffutils"
-;        "fq"
+        "fq"
         "gawk"
         "gron"
         "hdf5"
@@ -39,7 +40,7 @@
         "python-jsondiff"
         "python-jsbeautifier"
         "python-pdftotext"
-;        "python-yq"
+        "python-yq"
         "recutils"
         "unrtf"
         "vbindiff"
@@ -49,7 +50,7 @@
         "yq"))
 
 (define parsing-manifest
-  (specifications->manifest
+  (package-manifest
      parsing-packages))
 
 (with-locales parsing-manifest)

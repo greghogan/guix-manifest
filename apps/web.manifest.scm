@@ -11,13 +11,14 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define web-packages
   (list "lynx"
         "w3m"))
 
 (define web-manifest
-  (specifications->manifest
+  (package-manifest
      web-packages))
 
 (with-locales web-manifest)

@@ -10,19 +10,15 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(include "../lib/arch.scm")
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define resource-topology-packages
-  (append
-   (match %system-architecture
-     ((or "x86_64" "i686")
-      (list "cpuid"
-            "hwinfo"))
-     (_ `()))
-   (list "dmidecode"
-         "lshw"
-         "numactl")))
+  (list "cpuid"
+        "dmidecode"
+        "hwinfo"
+        "lshw"
+        "numactl"))
 
 (define resource-topology-manifest
   (specifications->manifest

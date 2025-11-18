@@ -10,56 +10,52 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(include "../lib/arch.scm")
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 ;; Fix package collisions.
 (use-modules
  (gnu packages moreutils))
 
 (define utility-packages
-  (append
-   (match %system-architecture
-     ((or "x86_64" "i686")
-      (list "strace"
-            "turbostat"))
-     (_ `()))
-   (list "ascii"
-         "bc"
-         "coreutils"
-         "datefudge"
-         "dos2unix"
-         "earlyoom"
-         "evtest"
-         "expect"
-         "fakeroot"
-         "libfaketime"
-         "libtree"
-         "mc"
-         "moreutils"
-         "multitime"
-         "neofetch"
-         "parallel"
-         "pngcheck"
-         "primesieve"
-         "procps"
-         "progress"
-         "psmisc"
-         "pv"
-         "pw"
-         "pwgen"
-         "renameutils"
-         "sharutils"
-         "time"
-         "tree"
-         "units"
-         "util-linux"
-         "which"
-         "xe"
-         "zenity")))
+  (list "ascii"
+        "bc"
+        "coreutils"
+        "datefudge"
+        "dos2unix"
+        "earlyoom"
+        "evtest"
+        "expect"
+        "fakeroot"
+        "libfaketime"
+        "libtree"
+        "mc"
+        "moreutils"
+        "multitime"
+        "neofetch"
+        "parallel"
+        "pngcheck"
+        "primesieve"
+        "procps"
+        "progress"
+        "psmisc"
+        "pv"
+        "pw"
+        "pwgen"
+        "renameutils"
+        "sharutils"
+        "strace"
+        "time"
+        "tree"
+        "turbostat"
+        "units"
+        "util-linux"
+        "which"
+        "xe"
+        "zenity"))
 
 (define utility-manifest
-  (specifications->manifest
+  (package-manifest
      utility-packages))
 
 (with-locales utility-manifest)

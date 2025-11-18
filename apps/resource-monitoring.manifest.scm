@@ -10,34 +10,29 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(include "../lib/arch.scm")
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define resource-monitoring-packages
-  (append
-   (match %system-architecture
-     ((or "x86_64" "i686")
-      (list "duc"))
-     (_ `()))
-   (list "atop"
-         "bashtop"
-         "btop"
-         "dstat"
-         "glances"
-         "htop"
-         "iftop"
-         "iotop"
-         "iproute2"
-         "jnettop"
-         "ncdu"
-         "nethogs"
-         "nmon"
-         "sysstat"
-         "tcptrack")))
-
+  (list "atop"
+        "bashtop"
+        "btop"
+        "dstat"
+        "duc"
+        "glances"
+        "htop"
+        "iftop"
+        "iotop"
+        "iproute2"
+        "jnettop"
+        "ncdu"
+        "nethogs"
+        "nmon"
+        "sysstat"
+        "tcptrack"))
 
 (define resource-monitoring-manifest
-  (specifications->manifest
+  (package-manifest
      resource-monitoring-packages))
 
 (with-locales resource-monitoring-manifest)

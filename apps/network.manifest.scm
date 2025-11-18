@@ -11,13 +11,14 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define network-packages
   (list "aria2"
         "bpftrace"
         "curl"
         "curl:doc"
-        "httpie"
+;        "httpie"
         "inetutils"
         "iperf"
         "iputils"
@@ -35,7 +36,7 @@
         "wget2"))
 
 (define network-manifest
-  (specifications->manifest
+  (package-manifest
      network-packages))
 
 (with-locales network-manifest)

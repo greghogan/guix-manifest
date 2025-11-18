@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define graph-packages
   (list "graphviz"
@@ -21,7 +22,7 @@
         "xdot"))
 
 (define graph-manifest
-  (specifications->manifest
+  (package-manifest
      graph-packages))
 
 (with-locales graph-manifest)

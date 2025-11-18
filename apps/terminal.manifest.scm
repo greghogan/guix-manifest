@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define terminal-packages
   (list "screen"
@@ -23,7 +24,7 @@
         "urlscan"))
 
 (define terminal-manifest
-  (specifications->manifest
+  (package-manifest
      terminal-packages))
 
 (with-locales terminal-manifest)

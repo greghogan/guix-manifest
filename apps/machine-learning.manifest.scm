@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define machine-learning-packages
   (list "python-pytorch"
@@ -19,7 +20,7 @@
 ))
 
 (define machine-learning-manifest
-  (specifications->manifest
+  (package-manifest
      machine-learning-packages))
 
 (with-locales machine-learning-manifest)

@@ -11,6 +11,7 @@
 ;; limitations under the License.
 
 (include "../lib/locale.scm")
+(include "../lib/target.scm")
 
 (define search-packages
   (list "ack"
@@ -24,7 +25,7 @@
         "ugrep"))
 
 (define search-manifest
-  (specifications->manifest
+  (package-manifest
      search-packages))
 
 (with-locales search-manifest)
